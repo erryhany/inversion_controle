@@ -1,4 +1,11 @@
-package dao;
+package com.mourad.inversion_controle.dao;
 
-public class DaoImpl {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class DaoImpl implements IDao {
+    @Override
+    public double getData() {
+        return 10.0;
+    }
 }
