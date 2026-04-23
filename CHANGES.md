@@ -43,9 +43,22 @@ Rendre le projet plus propre et evolutif avec une vraie demonstration d'inversio
 - Le projet montre mieux l'IoC en selectionnant automatiquement une implementation de `IDao` selon la configuration.
 - La structure est plus lisible et plus maintenable.
 - Les tests couvrent des scenarios reels de configuration.
+- Le backend expose maintenant une API REST consomable par Angular.
+
+## Backend pour Angular
+- Ajout de `spring-boot-starter-web` dans `pom.xml`.
+- Ajout du controleur `CalculationController` avec:
+  - `GET /api/v1/calculation` (retourne `{ "result": ... }`)
+  - `GET /api/v1/health` (retourne `{ "status": "UP" }`)
+- CORS active pour Angular via `app.cors.allowed-origin` (par defaut `http://localhost:4200`).
+- Ajout d'un test d'integration API: `CalculationControllerIntegrationTests`.
 
 ## Fichiers concernes
 - `src/main/resources/application.properties`
+- `pom.xml`
+- `src/main/java/com/mourad/inversion_controle/api/CalculationController.java`
+- `src/main/java/com/mourad/inversion_controle/api/CalculationResponse.java`
+- `src/main/java/com/mourad/inversion_controle/api/StatusResponse.java`
 - `src/main/java/com/mourad/inversion_controle/dao/IDao.java`
 - `src/main/java/com/mourad/inversion_controle/dao/DaoImpl.java`
 - `src/main/java/com/mourad/inversion_controle/ex1/DaoWebServiceImpl.java`
@@ -54,3 +67,4 @@ Rendre le projet plus propre et evolutif avec une vraie demonstration d'inversio
 - `src/main/java/com/mourad/inversion_controle/pres/Presentation.java`
 - `src/test/java/com/mourad/inversion_controle/InversionControleApplicationTests.java`
 - `src/test/java/com/mourad/inversion_controle/WebServiceDaoIntegrationTests.java`
+- `src/test/java/com/mourad/inversion_controle/CalculationControllerIntegrationTests.java`

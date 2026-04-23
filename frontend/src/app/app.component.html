@@ -1,0 +1,24 @@
+<main class="page">
+  <section class="card">
+    <h1>Inversion Controle - Dashboard</h1>
+    <p class="subtitle">Frontend Angular connecte au backend Spring Boot</p>
+
+    <div class="status-row">
+      <span class="label">Etat API</span>
+      <span class="value" [class.is-up]="healthStatus === 'UP'">{{ healthStatus }}</span>
+    </div>
+
+    <div class="result-row">
+      <span class="label">Resultat metier</span>
+      <span class="value result-value">{{ result ?? '-' }}</span>
+    </div>
+
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+
+    <button type="button" (click)="refreshData()" [disabled]="isLoading">
+      {{ isLoading ? 'Chargement...' : 'Rafraichir' }}
+    </button>
+  </section>
+</main>
