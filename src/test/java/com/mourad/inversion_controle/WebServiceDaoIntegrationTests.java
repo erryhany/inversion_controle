@@ -8,21 +8,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(properties = {
-        "dao.type=local",
-        "dao.local.value=10",
-        "business.multiplier=2"
+        "dao.type=ws",
+        "dao.ws.value=25",
+        "business.multiplier=3"
 })
-class InversionControleApplicationTests {
+class WebServiceDaoIntegrationTests {
     @Autowired
     private IMetier metier;
 
     @Test
-    void contextLoads() {
+    void calculUsesWebServiceDaoWhenConfigured() {
+        assertEquals(75.0, metier.calcul());
     }
-
-    @Test
-    void calculUsesDaoValue() {
-        assertEquals(20.0, metier.calcul());
-    }
-
 }

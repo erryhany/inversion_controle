@@ -1,11 +1,14 @@
 package com.mourad.inversion_controle.pres;
 
 import com.mourad.inversion_controle.metier.IMetier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Presentation implements CommandLineRunner {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Presentation.class);
     private final IMetier metier;
 
     public Presentation(IMetier metier) {
@@ -14,7 +17,6 @@ public class Presentation implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        double result = metier.calcul();
-        System.out.println("Resultat metier = " + result);
+        LOGGER.info("Resultat metier = {}", metier.calcul());
     }
 }
